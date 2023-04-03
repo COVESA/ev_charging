@@ -76,7 +76,6 @@ INFO     All done.
 
 ```
 
-
 ### Generate JSON
 
 The example below shows how to generate csv. The result will be available in `road_infrastructure.json`.
