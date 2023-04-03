@@ -1,0 +1,53 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+Occupation:
+  type: branch
+  description: Information about the reservation of a specific Charging station done from the driver via HMI.
+
+Occupation.InternalId:
+  type: attribute
+  datatype: string
+  description: Internal ID - Used by Charge Point Operator.
+
+Occupation.EVSEId:
+  type: attribute
+  datatype: string
+  description: External ID - Used for external.
+
+Occupation.ConnectorId:
+  type: attribute
+  datatype: string
+  description: Connector ID - Revelant if station has mulitple plugs.
+
+Occupation.ConnectorStatus:
+  type: sensor
+  datatype: string
+  allowed: ['AVAILABLE', 'USED', 'UNAVAILBLE']
+  description: Status of Charging Connector.
+  comment: Unavailable indicates that the connector cannot be used, including that it is broken, or being maintained.
+
+Occupation.MacAddress:
+  type: attribute
+  datatype: string
+  description: Mac Address of Connector.
+
+Occupation.PlannedArrival:
+  type: sensor
+  datatype: string
+  description: Planned arrival at reserved charging station formatted according to ISO 8601 with UTC time zone.
+
+Occupation.PlannedDeparture:
+  type: sensor
+  datatype: string
+  description: Planned departure from reserved charging station formatted according to ISO 8601 with UTC time zone.
+
+Occupation.IsOccupied:
+  type: sensor
+  datatype: boolean
+  description: The own vehicle occupies the charging station with the transmitted ID.

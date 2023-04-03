@@ -1,0 +1,12 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+RoadInfrastructure:
+  type: branch
+  description: Road Infrastructure Data.
+
+#include RoadInfrastructure/Charging.vspec RoadInfrastructure

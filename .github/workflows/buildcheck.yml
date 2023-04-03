@@ -1,0 +1,44 @@
+name: Standard Build Check
+
+on: [push, pull_request]
+
+jobs:
+  buildtest:
+    name: Build Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install pyenv
+        run: |
+          # Needed for using exact python version, which is
+          # required in `Pipfile`.
+          curl https://pyenv.run | bash
+          export PATH="$HOME/.pyenv/bin:$PATH"
+          pyenv install 3.8.12
+
+      - name: Install python packages
+        run: |
+          python -V
+          python -m pip --quiet --no-input install --upgrade pip 
+          python -m pip --quiet --no-input install --upgrade pipenv wheel
+          pipenv --version
+          pipenv run python --version
+          cd vss-tools
+          
+          pipenv install
+          echo done!
+          pipenv run python setup.py install
+        env:
+          PIPENV_VENV_IN_PROJECT: 1
+          
+      - name: Test mandatory targets
+        run: |
+          pipenv install
+          pipenv run make all
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1

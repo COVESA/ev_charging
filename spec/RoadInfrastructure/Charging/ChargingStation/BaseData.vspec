@@ -1,0 +1,104 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+BaseData:
+  type: branch
+  description: Base Data for a Charging Station.
+
+# TODO: How do you expect address to be formatted
+# Mandatory like below?
+# Isn't zip and postal code identical. 
+# Example:
+# Borsigstrasse, 24, 70469, Baden-Wuerttemberg, Stuttgart, DE, 70469
+#
+# Or free text depending on how addresses typically are written in the country where it is given
+# (In some countries state/county is rarely specified)
+
+BaseData.Address:
+  type: attribute
+  datatype: string
+  description: Adress of Charge Station ["Street", "Street No", "Postal Code", "State", "City", "Country Code", "Zip Code"].
+
+BaseData.ProviderId:
+  type: attribute
+  datatype: string
+  description: 3 digit ID of Charge Point Operator.
+
+BaseData.ProviderName:
+  type: attribute
+  datatype: string
+  description: Full name of Charge Point Operator.
+
+BaseData.IsAccessRestricted:
+  type: attribute
+  datatype: boolean
+  description: Flag if Access is restricted to specific user groups.
+
+BaseData.IsTrailerFriendly:
+  type: attribute
+  datatype: boolean
+  description: Flag if access with attached trailer.
+
+BaseData.OpeningHours:
+  type: attribute
+  datatype: string[]
+  arraysize: 7
+  description: Opening Hours, one entry per day.
+
+# TODO: Better description of signal below needed, what does it mean?
+# original name in excel: "Charging when closed"
+
+BaseData.IsChargingWhenClosed:
+  type: attribute
+  datatype: boolean
+  description: Opening Hours, one entry per day.
+
+BaseData.LastUpdated:
+  type: attribute
+  datatype: string
+  description: Last update of base data according to ISO 8601 with UTC time zone.
+
+BaseData.MaxPower:
+  type: attribute
+  datatype: float
+  unit: W
+  min: 0.0
+  description: Maximum charging power of the charge station.
+
+BaseData.MaxVoltage:
+  type: attribute
+  datatype: float
+  unit: W
+  min: 0.0
+  description: Maximum voltage (DC or AC RMS) of charge station.
+
+BaseData.AuthenticationMethods:
+  type: attribute
+  datatype: string[]
+  allowed: ['APP', 'RFID', 'CREDIT_CARD', 'PNC', 'OTHER']
+  description: Methods to start charge event.
+
+BaseData.IsRoofed:
+  type: attribute
+  datatype: boolean
+  description: Indicator if Charge Station has roof or Rain Protection.
+
+BaseData.IsLit:
+  type: attribute
+  datatype: boolean
+  description: Indicator if Charge Station has good lightening during night.
+
+BaseData.HardwareVendor:
+  type: attribute
+  datatype: string
+  description: Vendor of Charge Station.
+
+BaseData.FirmwareVersion:
+  type: attribute
+  datatype: string
+  description: Firmware Version.

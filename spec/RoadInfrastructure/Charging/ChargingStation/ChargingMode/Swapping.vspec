@@ -1,0 +1,28 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+Swapping:
+  type: branch
+  description: Information about the battery supported for swapping.
+
+# Enum below taken from ChargePlugType in
+# https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/Powertrain/Battery.vspec
+# If changes are needed thye should preferably be updated in both files
+
+Swapping.BatteryType:
+  datatype: string[]
+  type: attribute
+  allowed: [
+    'NIO',
+    'OTHER'
+    ]
+  description: Type of changeable battery types supported by the charging station.
+  comment:     A charging station may support swapping of multiple battery types.
+               NIO refers to refer to non-standardized batteries used by NIO.
+               OTHER shall be used if the charging station supports swapping of additional battery types
+               not listed above.

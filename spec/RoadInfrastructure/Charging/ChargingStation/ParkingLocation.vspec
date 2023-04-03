@@ -1,0 +1,87 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+ParkingLocation:
+  type: branch
+  description: Information about the infrastructure of the parking location.
+
+ParkingLocation.IsParkingGarage:
+  type: attribute
+  datatype: boolean
+  description: Flag if Charger is located in parking garage.
+
+ParkingLocation.ParkingName:
+  type: attribute
+  datatype: string
+  description: Name of Parking Garage.
+
+ParkingLocation.FloorLevel:
+  type: attribute
+  datatype: int8
+  description: Floor Level.
+               0 = Ground Floor, 1 = First floor above ground floor, -1 = first floor below ground floor, ...
+
+ParkingLocation.SpaceNumber:
+  type: attribute
+  datatype: string
+  description: Name / Number if parking space has floor marking.
+
+ParkingLocation.Longitude:
+  type: attribute
+  datatype: double
+  min: -180
+  max: 180
+  unit: degrees
+  description: Longitude of charging station in WGS 84 geodetic coordinates.
+  
+ParkingLocation.Latitude:
+  type: attribute
+  datatype: double
+  min: -90
+  max: 90
+  unit: degrees
+  description: Latitude of charging station in WGS 84 geodetic coordinates.
+
+ParkingLocation.MaxWidth:
+  type: attribute
+  datatype: uint16
+  unit: mm
+  description: Max width of the vehicle using the parking slot.
+
+ParkingLocation.MaxLength:
+  type: attribute
+  datatype: uint16
+  unit: mm
+  description: Max length of the vehicle using the parking slot.
+
+ParkingLocation.MaxHeight:
+  type: attribute
+  datatype: uint16
+  unit: mm
+  description: Max height of the vehicle using the parking slot.
+
+# TODO: Check name/description of signal below. What is actually meant
+# Original name SecuredAccess
+ParkingLocation.IsPublic:
+  type: attribute
+  datatype: boolean
+  description: Indicates if charging station is accessible to the public
+               True - Anyone can drive to and use the charging station
+               False - Access or usage is restricted to drivers with permission
+
+ParkingLocation.Toilets:
+  type: attribute
+  datatype: string[]
+  allowed: ['MALE', 'FEMALE', 'UNISEX', 'ACCESSIBLE_UNISEX']
+  description: Indicates type of toilets available at charging station.
+
+ParkingLocation.Amenities:
+  type: attribute
+  datatype: string[]
+  allowed: ['BABY_CARE', 'KIDS_PLAYGROUND', 'SNACK', 'RESTAURANT', 'HOTEL']
+  description: Nearby amenities.

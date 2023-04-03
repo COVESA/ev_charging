@@ -1,0 +1,23 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+CustomerFeedback:
+  type: branch
+  description: Customer feedback about the actual charging process.
+
+CustomerFeedback.StarRating:
+  type: sensor
+  datatype: int8
+  min: 1
+  max: 5
+  description: 5-Star Rating of the customer for the current charging station (1 = 1 star, 2 = 2 stars ,… 5 = 5 stars).
+
+CustomerFeedback.Illumination:
+  type: sensor
+  datatype: string
+  description: Illumination feedback from the driver.

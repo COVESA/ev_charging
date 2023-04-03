@@ -1,0 +1,62 @@
+#
+# (C) 2023 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+ChargingProcess:
+  type: branch
+  description: Information about the current charging process as seen from the vehicle.
+
+ChargingProcess.AveragePower:
+  type: sensor
+  datatype: float
+  unit: W
+  description: Average charging power of the current charging process.
+               Negative = Energy flowing out of vehicle.
+
+ChargingProcess.CurrentPower:
+  type: sensor
+  datatype: float
+  unit: W
+  description: Current charging power of the running charging process.
+               Negative = Energy flowing out of vehicle.
+
+ChargingProcess.MaximumPower:
+  type: sensor
+  datatype: float
+  unit: W
+  min: 0.0
+  description: Maximum charging power delivered to vehicle during the running charging process.
+  comment: Can not be negative, as it only concerns energy floating in to vehicle.
+
+ChargingProcess.Time2End:
+  type: sensor
+  datatype: int32
+  unit: s
+  description: Planned time to complete charging process in seconds.
+               Shall be 0 if charging is completed.
+
+ChargingProcess.Status:
+  type: sensor
+  datatype: string
+  allowed: ['NOT_STARTED', 'ONGOING', 'COMPLETED']
+  description: Describe if charging process is ongoing.
+  comment: 'Old name: Complete'
+
+ChargingProcess.ErrorStatus:
+  type: sensor
+  datatype: string
+  allowed: ['NONE', 'SUCCESS_AFTER_ERROR', 'FAULTY']
+  description: Indicates if an errror occurred during charging station.
+  comment: 'Old name: ErrorOccurred'
+
+ChargingProcess.ErrorCode:
+  type: sensor
+  datatype: string
+  description: Error code according to charging protocol.
+               May refer to either current or previous error.
+  comment: e.g. OCCP, ISO15118,….
+  
